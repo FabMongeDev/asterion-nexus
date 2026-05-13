@@ -25,8 +25,11 @@ export default function Hero() {
         </p>
 
         <h1 className="
-          max-w-4xl
-          text-6xl
+          max-w-4x1
+          text-4x1
+          sm:text-5xl
+          lg:text-6xl
+          xl:text-7xl
           font-black
           leading-tight
 

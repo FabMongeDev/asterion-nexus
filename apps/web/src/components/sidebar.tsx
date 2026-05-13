@@ -21,17 +21,7 @@ const items = [
 
 export default function Sidebar() {
   return (
-    <aside
-        className="
-            sticky top-0
-            h-screen w-72
-            border-r border-white/10
-            bg-white/5
-            backdrop-blur-xl
-            p-6
-        "
-        >
-
+   <aside className="w-72 min-h-screen overflow-hidden border-r border-white/10 bg-white/5 backdrop-blur-xl p-6">
         <motion.h1
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -41,7 +31,7 @@ export default function Sidebar() {
         <span className="text-cyan-400"> NEXUS</span>
         </motion.h1>
 
-        <nav className="mt-12 flex flex-col gap-3">
+        <nav className="mt-12 flex gap-3 lg:mt-12 lg:flex-col" >
 
         {items.map((item, index) => {
           const Icon = item.icon;
@@ -53,7 +43,7 @@ export default function Sidebar() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: index * 0.08 }}
             whileHover={{
-                x: 8,
+                // x: 8,
                 scale: 1.02,
             }}
             whileTap={{
@@ -96,7 +86,15 @@ export default function Sidebar() {
                 "
             />
 
-            <div className="relative z-10 flex items-center gap-3">
+            <div
+                className="
+                    relative z-10
+                    flex items-center gap-3
+
+                    transition-transform duration-300
+                    group-hover:translate-x-2
+                "
+            >
 
                 <Icon
                 size={20}

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useMemo } from "react";
 
 type Particle = {
   size: number;
@@ -19,39 +20,30 @@ const colors = [
   "bg-violet-500",
 ];
 
+function random(max: number) {
+  return crypto.getRandomValues(new Uint32Array(1))[0] % max;
+}
+
 function createParticles(): Particle[] {
-
   return Array.from({ length: 40 }, () => ({
-    size: crypto.getRandomValues(new Uint32Array(1))[0] % 6 + 2,
+    size: random(6) + 2,
 
-    initialX:
-      crypto.getRandomValues(new Uint32Array(1))[0] % 1600,
+    initialX: random(1600),
+    initialY: random(1000),
 
-    initialY:
-      crypto.getRandomValues(new Uint32Array(1))[0] % 1000,
+    animateX: random(1600) + 100,
+    animateY: -random(200),
 
-    animateX:
-      (crypto.getRandomValues(new Uint32Array(1))[0] % 1600) + 100,
+    duration: random(25) + 10,
+    delay: random(5),
 
-    animateY:
-      -(crypto.getRandomValues(new Uint32Array(1))[0] % 200),
-
-    duration:
-      (crypto.getRandomValues(new Uint32Array(1))[0] % 25) + 10,
-
-    delay:
-      crypto.getRandomValues(new Uint32Array(1))[0] % 5,
-
-    color:
-        colors[
-        crypto.getRandomValues(new Uint32Array(1))[0] % colors.length
-    ],
+    color: colors[random(colors.length)],
   }));
 }
 
-const particles = createParticles();
-
 export default function FloatingParticles() {
+
+  const particles = useMemo(() => createParticles(), []);
 
   return (
     <div className="pointer-events-none fixed inset-0 overflow-hidden">
@@ -85,8 +77,8 @@ export default function FloatingParticles() {
             shadow-[0_0_20px_rgba(34,211,238,0.9)]
           `}
           style={{
-            width: particle.size * 1,
-            height: particle.size * 1,
+            width: particle.size,
+            height: particle.size,
           }}
         />
 

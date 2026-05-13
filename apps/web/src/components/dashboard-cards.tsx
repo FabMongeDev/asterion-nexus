@@ -27,7 +27,7 @@ const cards = [
 
 export default function DashboardCards() {
   return (
-    <div className="mt-8 grid gap-6 md:grid-cols-3">
+    <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
 
       {cards.map((card, index) => {
         const Icon = card.icon;

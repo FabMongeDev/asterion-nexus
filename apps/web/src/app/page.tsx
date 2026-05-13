@@ -1,6 +1,7 @@
 import Sidebar from "../components/sidebar";
 import Hero from "../components/hero";
 import DashboardCards from "../components/dashboard-cards";
+import Topbar from "../components/topbar";
 import BackgroundEffects from "../components/background-effects";
 import FloatingParticles from "../components/floating-particles";
 
@@ -12,11 +13,13 @@ export default function Home() {
 
       <FloatingParticles />
 
-      <div className="relative z-10 flex">
+      <div className="relative z-10 flex flex-col lg:flex-row">
 
         <Sidebar />
 
-        <section className="flex-1 p-10">
+        <section className="flex-1 p-4 sm:p-6 lg:p-10">
+
+          <Topbar />
 
           <Hero />
 
