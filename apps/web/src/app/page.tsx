@@ -4,6 +4,7 @@ import DashboardCards from "../components/dashboard-cards";
 import Topbar from "../components/topbar";
 import BackgroundEffects from "../components/background-effects";
 import FloatingParticles from "../components/floating-particles";
+import SystemActivity from "../components/system-activity";
 
 export default function Home() {
   return (
@@ -17,13 +18,15 @@ export default function Home() {
 
         <Sidebar />
 
-        <section className="flex-1 p-4 sm:p-6 lg:p-10">
+        <section className="fmin-w-0 flex-1 p-4 sm:p-6 lg:p-10">
 
           <Topbar />
 
           <Hero />
 
           <DashboardCards />
+
+          <SystemActivity />
 
         </section>
 

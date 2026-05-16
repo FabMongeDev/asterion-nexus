@@ -26,7 +26,7 @@ export default function Hero() {
 
         <h1 className="
           max-w-4x1
-          text-4x1
+          text-4xl
           sm:text-5xl
           lg:text-6xl
           xl:text-7xl

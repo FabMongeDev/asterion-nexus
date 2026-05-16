@@ -8,14 +8,31 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
+import { useEffect, useState } from "react";
+
 export default function Topbar() {
 
-  const now = new Date();
+  const [time, setTime] = useState("");
 
-  const time = now.toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  useEffect(() => {
+
+    const updateTime = () => {
+
+      const current = new Intl.DateTimeFormat([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      }).format(new Date());
+
+      setTime(current);
+    };
+
+    updateTime();
+
+    const interval = setInterval(updateTime, 1000);
+
+    return () => clearInterval(interval);
+
+  }, []);
 
   return (
 
@@ -53,6 +70,11 @@ export default function Topbar() {
             px-4 py-2
 
             text-sm text-cyan-300
+
+            transition-all duration-300
+
+            hover:border-cyan-400/30
+            hover:shadow-[0_0_25px_rgba(34,211,238,0.12)]
           "
         >
           <ShieldCheck size={16} />
@@ -70,6 +92,11 @@ export default function Topbar() {
             px-4 py-2
 
             text-sm text-white/60
+
+            transition-all duration-300
+
+            hover:border-cyan-400/30
+            hover:shadow-[0_0_25px_rgba(34,211,238,0.12)]
           "
         >
           <Wifi size={16} />
@@ -80,39 +107,78 @@ export default function Topbar() {
       </div>
 
       {/* CENTER */}
-      <div
-        className="
-          hidden lg:flex
+      <div className="hidden lg:flex items-center">
 
-          items-center gap-3
-
-          rounded-2xl
-          border border-white/10
-
-          bg-black/20
-          px-4 py-3
-
-          text-white/50
-        "
-      >
-
-        <Search size={18} />
-
-        <input
-          placeholder="Search modules..."
+        <div
           className="
-            bg-transparent
-            outline-none
-            placeholder:text-white/30
+            group
+            flex items-center gap-3
+
+            overflow-hidden
+
+            rounded-2xl
+            border border-white/10
+
+            bg-black/20
+
+            px-4 py-3
+
+            transition-all duration-500
+
+            w-40
+            focus-within:w-80
+
+            hover:border-cyan-400/30
+            hover:shadow-[0_0_25px_rgba(34,211,238,0.12)]
+
+            focus-within:border-cyan-400/40
+            focus-within:shadow-[0_0_30px_rgba(34,211,238,0.18)]
           "
-        />
+        >
+
+          <Search
+            size={18}
+            className="
+              min-w-[18px]
+              text-white/50
+
+              transition-colors duration-300
+
+              group-focus-within:text-cyan-300
+            "
+          />
+
+          <input
+            type="text"
+            placeholder="Search modules..."
+            className="
+              w-full
+              bg-transparent
+
+              text-sm text-white
+
+              outline-none
+
+              placeholder:text-white/30
+            "
+          />
+
+        </div>
 
       </div>
 
       {/* RIGHT */}
       <div className="flex items-center gap-4">
 
-        <div className="text-sm text-white/50">
+        <div
+          className="
+            text-sm text-white/50
+
+            transition-all duration-300
+
+            hover:text-cyan-300
+          "
+        >
           {time}
         </div>
 
@@ -132,6 +198,8 @@ export default function Topbar() {
 
             hover:border-cyan-400/30
             hover:text-cyan-300
+
+            hover:shadow-[0_0_25px_rgba(34,211,238,0.15)]
           "
         >
 
@@ -159,6 +227,11 @@ export default function Topbar() {
 
             bg-white/5
             px-3 py-2
+
+            transition-all duration-300
+
+            hover:border-cyan-400/30
+            hover:shadow-[0_0_25px_rgba(34,211,238,0.12)]
           "
         >
 

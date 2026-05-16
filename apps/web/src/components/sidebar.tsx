@@ -21,7 +21,7 @@ const items = [
 
 export default function Sidebar() {
   return (
-   <aside className="w-72 min-h-screen overflow-hidden border-r border-white/10 bg-white/5 backdrop-blur-xl p-6">
+   <aside className="w-full lg:w-72 lg:min-h-screen overflow-visible border-b lg:border-b-0 lg:border-r border-white/10 bg-white/5 backdrop-blur-xl p-6">
         <motion.h1
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -31,7 +31,7 @@ export default function Sidebar() {
         <span className="text-cyan-400"> NEXUS</span>
         </motion.h1>
 
-        <nav className="mt-12 flex gap-3 lg:mt-12 lg:flex-col" >
+        <nav className="mt-12 flex gap-3 overflow-x-visible lg:flex-col" >
 
         {items.map((item, index) => {
           const Icon = item.icon;
@@ -53,7 +53,7 @@ export default function Sidebar() {
                 group
                 relative
                 flex items-center gap-3
-                overflow-hidden
+                overflow-visible
                 rounded-2xl
                 px-4 py-3
                 text-white/70
@@ -66,6 +66,8 @@ export default function Sidebar() {
             <div
                 className="
                 absolute inset-0
+                rounded-2xl
+                
                 opacity-0
                 transition-opacity duration-300
                 group-hover:opacity-100
@@ -89,10 +91,10 @@ export default function Sidebar() {
             <div
                 className="
                     relative z-10
-                    flex items-center gap-3
+                    flex items-center justify-center gap-3 sm:justify-start
 
                     transition-transform duration-300
-                    group-hover:translate-x-2
+                    lg:group-hover:translate-x-2
                 "
             >
 
@@ -105,7 +107,7 @@ export default function Sidebar() {
                 "
                 />
 
-                <span>{item.label}</span>
+                <span className="hidden sm:inline">{item.label}</span>
 
             </div>
 
