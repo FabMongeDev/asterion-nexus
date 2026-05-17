@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import {
   House,
   Users,
@@ -11,12 +12,12 @@ import {
 } from "lucide-react";
 
 const items = [
-  { label: "Home", icon: House },
-  { label: "About", icon: Users },
-  { label: "Events", icon: CalendarDays },
-  { label: "News", icon: Newspaper },
-  { label: "Gallery", icon: ImageIcon },
-  { label: "Contact", icon: Mail },
+  { label: "Home", href: "/", icon: House },
+  { label: "About", href: "/about", icon: Users },
+  { label: "Events", href: "/events", icon: CalendarDays },
+  { label: "News", href: "/news", icon: Newspaper },
+  { label: "Gallery", href: "/gallery", icon: ImageIcon },
+  { label: "Contact", href: "/contact", icon: Mail },
 ];
 
 export default function Sidebar() {
@@ -37,7 +38,7 @@ export default function Sidebar() {
           const Icon = item.icon;
 
           return (
-            <motion.button
+            <motion.div
             key={item.label}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -88,13 +89,16 @@ export default function Sidebar() {
                 "
             />
 
-            <div
+            <Link
+                href={item.href}
                 className="
                     relative z-10
                     flex items-center justify-center gap-3 sm:justify-start
 
                     transition-transform duration-300
                     lg:group-hover:translate-x-2
+
+                    w-full
                 "
             >
 
@@ -109,9 +113,9 @@ export default function Sidebar() {
 
                 <span className="hidden sm:inline">{item.label}</span>
 
-            </div>
+            </Link>
 
-            </motion.button>
+            </motion.div>
           );
         })}
 
